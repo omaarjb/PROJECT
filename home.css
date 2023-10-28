@@ -1,0 +1,36 @@
+/* NAVBAR */
+
+.navbar-brand {
+  font-family: Agbalumo;
+  color: rgb(107, 79, 43);
+}
+
+.log-btn {
+  background-color: rgb(107, 79, 43);
+  color: white;
+  transition: all 0.3s;
+  border: none;
+}
+
+.log-btn:hover,
+.modal .sign-btn:hover {
+  background-color: rgb(146, 146, 146);
+  opacity: 0.9;
+}
+
+.modal i {
+  color: rgb(107, 79, 43);
+}
+
+.modal .sign-btn {
+  background-color: rgb(107, 79, 43);
+  border: none;
+  margin-top: 20px;
+}
+
+.swiper img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
