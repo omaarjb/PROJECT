@@ -1,0 +1,85 @@
+/* NAVBAR */
+
+.navbar-brand {
+  font-family: Agbalumo;
+  color: rgb(107, 79, 43);
+}
+
+.log-btn {
+  background-color: rgb(107, 79, 43);
+  color: white;
+  transition: all 0.3s;
+  border: none;
+}
+
+.log-btn:hover,
+.modal .sign-btn:hover {
+  background-color: rgb(146, 146, 146);
+  opacity: 0.9;
+}
+
+.modal i {
+  color: rgb(107, 79, 43);
+}
+
+.modal .sign-btn {
+  background-color: rgb(107, 79, 43);
+  border: none;
+  margin-top: 20px;
+}
+
+/*  Slides */
+
+.swiper img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.swiper-slide {
+  position: relative;
+}
+
+.slide-text {
+  position: absolute;
+  max-width: 500px;
+  text-align: center;
+  font-family: Agbalumo;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    0deg,
+    rgb(148, 207, 207) 23%,
+    rgb(199, 224, 195) 56%
+  );
+}
+
+/* CHeck Avilability */
+
+.check-av {
+  background-color: rgb(235, 234, 234);
+  border-radius: 20px;
+  box-shadow: 0px 3px 16px 8px rgba(0, 0, 0, 0.2);
+}
+
+.Avlibality {
+  margin-top: -60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ROOMS */
+
+.rTitle {
+  font-family: Agbalumo;
+  margin-top: 200px;
+  margin-bottom: 90px;
+}
+
+/* More Room Detail */
+
+.moreDet {
+  font-family: Agbalumo;
+  margin-bottom: 40px;
+}

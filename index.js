@@ -1,5 +1,4 @@
 // Show password
-
 const togglePassword = document.getElementById("togglePassword");
 const password = document.getElementById("password");
 
