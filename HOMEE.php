@@ -261,7 +261,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6">
-                <div class="card border-0 shadow" style="max-width: 350px; margin:auto;">
+                <div class="card border-0 shadow checkRoom" style="max-width: 350px; margin:auto;">
                     <img src="img/Rooms/1.webp" class="card-img-top">
                     <div class="card-body">
                         <h5>Single Room</h5>
@@ -280,7 +280,7 @@
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <div class="card border-0 shadow" style="max-width: 350px; margin:auto;">
+                <div class="card border-0 shadow checkRoom" style="max-width: 350px; margin:auto;">
                     <img src="img/Rooms/2.jpeg" class="card-img-top">
                     <div class="card-body">
                         <h5>Couple Room</h5>
@@ -300,7 +300,7 @@
 
 
             <div class="col-lg-4 col-md-6">
-                <div class="card border-0 shadow" style="max-width: 350px; margin:auto;">
+                <div class="card border-0 shadow checkRoom" style="max-width: 350px; margin:auto;">
                     <img src="img/Rooms/3.jpg" class="card-img-top">
                     <div class="card-body">
                         <h5>Family Room</h5>
@@ -320,7 +320,7 @@
 
 
             <div class="col-lg-12 text-center mt-5">
-                <a href="" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Check More Rooms</a>
+                <a href="rooms.php" class="btn btn-sm btn-outline-dark rounded fw-bold shadow-none px-4">Check More Rooms</a>
             </div>
         </div>
     </div>
