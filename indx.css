@@ -1,3 +1,7 @@
+body {
+  background-color: #f8efef;
+}
+
 /* NAVBAR */
 
 .navbar-brand {
@@ -30,13 +34,13 @@
 
 /*  Slides */
 
-.swiper img {
+.swiperSlide img {
   width: 100%;
   height: 500px;
   object-fit: cover;
 }
 
-.swiper-slide {
+.sw-slide {
   position: relative;
 }
 
@@ -94,4 +98,129 @@
 .checkRoom:hover {
   transform: scale(1.15);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* GALLERY */
+.gallery h1 {
+  margin-top: 150px;
+  margin-bottom: 40px;
+  font-family: Agbalumo;
+}
+
+.carousel-item img {
+  height: 800px;
+  object-fit: cover;
+}
+
+.carousel-inner {
+  border-radius: 30px;
+}
+
+/* FACILITIES */
+
+.facilities h1 {
+  margin-bottom: 40px;
+  font-family: Agbalumo;
+}
+
+.facilities img {
+  height: 250px;
+  object-fit: cover;
+}
+
+/* REVIEWS */
+
+.reviews h1 {
+  margin-top: 150px;
+  margin-bottom: 40px;
+  font-family: Agbalumo;
+}
+
+.reviews img {
+  width: 105px;
+  height: 105px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.mySwiperReviews p {
+  font-weight: 500;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mySwiperReviews i {
+  color: coral;
+}
+
+/* REACH US */
+
+.reachUs h1 {
+  margin-top: 150px;
+  margin-bottom: 40px;
+  font-family: Agbalumo;
+}
+
+.reachUs i {
+  font-size: 30px;
+  color: rgb(107, 79, 43);
+  transition: opacity 0.3s ease;
+}
+
+.reachUs i:hover {
+  opacity: 0.7;
+}
+
+.reachUs a {
+  text-decoration: none;
+  color: black;
+}
+
+.reachUsContact {
+  border-radius: 40px;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 200px;
+  background-color: white;
+  padding: 50px;
+}
+
+.footer h1 {
+  font-family: Agbalumo;
+}
+
+.footer .socials {
+  text-decoration: none;
+  color: black;
+  transition: opacity 0.3s;
+}
+
+.footer .socials:hover {
+  opacity: 0.7;
+}
+
+.footer li {
+  list-style: none;
+}
+
+.footer li a {
+  transition: opacity 0.3s;
+}
+
+.footer li a:hover {
+  opacity: 0.7;
+}
+
+.footer .paym {
+  font-size: 30px;
+}
+
+.copyright p {
+  font-weight: 500;
+}
+
+.copyright i {
+  font-size: 19px;
 }
