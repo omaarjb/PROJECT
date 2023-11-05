@@ -69,6 +69,7 @@ body {
 
 .Avlibality {
   margin-top: -60px;
+  margin-bottom: 80px;
   position: relative;
   z-index: 2;
 }
@@ -77,8 +78,8 @@ body {
 
 .rTitle {
   font-family: Agbalumo;
-  margin-top: 200px;
-  margin-bottom: 90px;
+  padding-top: 120px;
+  margin-bottom: 60px;
 }
 
 /* More Room Detail */
@@ -119,6 +120,7 @@ body {
 /* FACILITIES */
 
 .facilities h1 {
+  padding-top: 90px;
   margin-bottom: 40px;
   font-family: Agbalumo;
 }
@@ -156,8 +158,8 @@ body {
 /* REACH US */
 
 .reachUs h1 {
-  margin-top: 150px;
-  margin-bottom: 40px;
+  padding-top: 130px;
+  margin-bottom: 50px;
   font-family: Agbalumo;
 }
 
@@ -223,4 +225,50 @@ body {
 
 .copyright i {
   font-size: 19px;
+}
+
+/* ABOUT US */
+
+.aboutUs .abtTitle {
+  margin-top: 70px;
+  font-family: Agbalumo;
+}
+
+.abt-desc {
+  margin-top: 120px;
+}
+
+.abtDescImg {
+  border-radius: 25px;
+}
+
+.aboutUs p {
+  font-size: 17px;
+}
+
+.managTitle {
+  margin-top: 80px;
+  margin-bottom: 50px;
+  font-family: Agbalumo;
+}
+
+.abtIcons {
+  height: 85px;
+}
+
+.stats {
+  border-radius: 25px;
+}
+
+/* ADMIN LOGIN */
+
+.log-formAD {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  background-color: rgb(221, 219, 219);
+  padding: 30px;
+  border-radius: 20px;
 }
