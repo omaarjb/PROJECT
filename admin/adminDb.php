@@ -28,12 +28,20 @@ function filtration($data)
 }
 
 
-function select($sql, $values, $datatypes)
+function select($sql, $datatypes, $values)
 {
     $connection = $GLOBALS['connection'];
     if ($stmt = mysqli_prepare($connection, $sql)) {
         mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+        if (mysqli_stmt_execute($stmt)) {
+            $res = mysqli_stmt_get_result($stmt);
+            mysqli_stmt_close($stmt);
+            return $res;
+        } else {
+            mysqli_stmt_close($stmt);
+            die("Query connot be executed !");
+        }
     } else {
-        die("Query connot be executed !");
+        die("Query connot be prepared !");
     }
 }
