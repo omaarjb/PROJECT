@@ -45,3 +45,41 @@ function select($sql, $datatypes, $values)
         die("Query connot be prepared !");
     }
 }
+
+
+function update($sql, $datatypes, $values)
+{
+    $connection = $GLOBALS['connection'];
+    if ($stmt = mysqli_prepare($connection, $sql)) {
+        mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+        if (mysqli_stmt_execute($stmt)) {
+            $res = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
+            return $res;
+        } else {
+            mysqli_stmt_close($stmt);
+            die("Query connot be executed !");
+        }
+    } else {
+        die("Query connot be prepared !");
+    }
+}
+
+function insert($sql, $datatypes, $values)
+{
+    $connection = $GLOBALS['connection'];
+    if ($stmt = mysqli_prepare($connection, $sql)) {
+        mysqli_stmt_bind_param($stmt, $datatypes, ...$values);
+        if (mysqli_stmt_execute($stmt)) {
+            // Return the inserted row ID
+            $insertedId = mysqli_insert_id($connection);
+            mysqli_stmt_close($stmt);
+            return $insertedId;
+        } else {
+            mysqli_stmt_close($stmt);
+            die("Query cannot be executed !");
+        }
+    } else {
+        die("Query cannot be prepared !");
+    }
+}

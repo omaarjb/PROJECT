@@ -17,19 +17,19 @@
             <h1>Links</h1>
             <ul>
                 <li class="mb-2">
-                    <a href="#" class="d-inline text-dark text-decoration-none">Home</a>
+                    <a href="HOMEE.php" class="d-inline text-dark text-decoration-none">Home</a>
                 </li>
                 <li class="mb-2">
-                    <a href="#" class="d-inline text-dark  text-decoration-none">Rooms</a>
+                    <a href="HOMEE.php#rooms" class="d-inline text-dark  text-decoration-none">Rooms</a>
                 </li>
                 <li class="mb-2">
-                    <a href="#" class="d-inline text-dark  text-decoration-none">Facilities</a>
+                    <a href="HOMEE.php#facilities" class="d-inline text-dark  text-decoration-none">Facilities</a>
                 </li>
                 <li class="mb-2">
-                    <a href="#" class="d-inline text-dark  text-decoration-none">Contact Us</a>
+                    <a href="HOMEE.php#contactUs" class="d-inline text-dark  text-decoration-none">Contact Us</a>
                 </li>
                 <li>
-                    <a href="#" class="d-inline text-dark  text-decoration-none">About Us</a>
+                    <a href="aboutUs.php" class="d-inline text-dark  text-decoration-none">About Us</a>
                 </li>
             </ul>
         </div>
@@ -59,4 +59,97 @@
         </div>
     </div>
 </div>
-<?php
+
+<script>
+    let register_form = document.getElementById("register-form");
+    let passerror = document.getElementById("passError");
+    let phoneerror = document.getElementById("phoneError");
+    let emailerror = document.getElementById("emailError");
+    let registersucces = document.getElementById("registerSuccess");
+    register_form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let data = new FormData();
+        data.append('name', register_form.elements['name'].value);
+        data.append('email', register_form.elements['email'].value);
+        data.append('phonenum', register_form.elements['phonenum'].value);
+        data.append('adress', register_form.elements['adress'].value);
+        data.append('pincode', register_form.elements['pincode'].value);
+        data.append('dob', register_form.elements['dob'].value);
+        data.append('pass', register_form.elements['pass'].value);
+        data.append('cpass', register_form.elements['cpass'].value);
+        data.append('register', '');
+
+        var myModal = document.getElementById('registerModal');
+        var modal = bootstrap.Modal.getInstance(myModal);
+
+
+        let xhr = new XMLHttpRequest(); // jib data mn server - sift data-update..
+        xhr.open('POST', 'login-register.php', true);
+        xhr.onload = function() {
+            if (this.responseText == "invalidphone") {
+                phoneerror.innerHTML = "Invalid phone number";
+            } else if (this.responseText == "passlength") {
+                passerror.innerHTML = "Password must conatin at least 6 characters";
+            } else if (this.responseText == "notmatch") {
+                passerror.innerHTML = "Password and Confirm Password not match";
+            } else if (this.responseText == "Email already exists") {
+                emailerror.innerHTML = this.responseText;
+            } else if (this.responseText == "Phone number already exists") {
+                phoneerror.innerHTML = this.responseText;
+            } else {
+                modal.hide();
+                registersucces.innerHTML = `<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                            <strong>Register Success !</strong> You are registered successfully !
+                                           <button type='button' class='btn-close shadow-none' data-bs-dismiss='alert' aria-label='Close'></button>
+                                           </div>`;
+                register_form.reset();
+                phoneerror.innerHTML = "";
+                passerror.innerHTML = "";
+                emailerror.innerHTML = "";
+            }
+
+
+        }
+        xhr.send(data);
+
+
+    });
+
+
+    let login_form = document.getElementById("login-form");
+    let emailErrorLog = document.getElementById("emailErrorLog");
+    let passErrorLog = document.getElementById("passErrorLog");
+    login_form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let data = new FormData();
+        data.append('email_phone', login_form.elements['email_phone'].value);
+        data.append('pass', login_form.elements['pass'].value);
+        data.append('login', '');
+
+        var myModal = document.getElementById('loginModal');
+        var modal = bootstrap.Modal.getInstance(myModal);
+
+
+        let xhr = new XMLHttpRequest(); // jib data mn server - sift data-update..
+        xhr.open('POST', 'login-register.php', true);
+        xhr.onload = function() {
+            if (this.responseText == "not exist") {
+                emailErrorLog.innerHTML = "Email or Phone number not exist";
+            } else if (this.responseText == "wrong pass") {
+                passErrorLog.innerHTML = "Wrong password";
+            } else {
+                modal.hide();
+                window.location = window.location.pathname;
+                emailErrorLog.innerHTML = "";
+                passErrorLog.innerHTML = "";
+            }
+
+
+
+
+        }
+        xhr.send(data);
+
+
+    });
+</script>

@@ -6,11 +6,20 @@ body {
 
 .navbar-brand {
   font-family: Agbalumo;
-  color: rgb(107, 79, 43);
+  color: rgb(202, 154, 91);
+}
+
+.navbar-brand:hover {
+  color: rgb(146, 146, 146);
+  opacity: 0.9;
+}
+
+.navbar-toggler {
+  background-color: rgb(202, 154, 91);
 }
 
 .log-btn {
-  background-color: rgb(107, 79, 43);
+  background-color: rgb(202, 154, 91);
   color: white;
   transition: all 0.3s;
   border: none;
@@ -27,7 +36,7 @@ body {
 }
 
 .modal .sign-btn {
-  background-color: rgb(107, 79, 43);
+  background-color: rgb(202, 154, 91);
   border: none;
   margin-top: 20px;
 }
@@ -165,7 +174,7 @@ body {
 
 .reachUs i {
   font-size: 30px;
-  color: rgb(107, 79, 43);
+  color: rgb(202, 154, 91);
   transition: opacity 0.3s ease;
 }
 
