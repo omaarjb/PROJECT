@@ -14,11 +14,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet">
     <title>Rooms</title>
+    <script>
+        // Read the theme preference from localStorage
+        const currentTheme = localStorage.getItem("theme");
+
+        // Set the theme on page load
+        if (currentTheme) {
+            document.documentElement.setAttribute("data-theme", currentTheme);
+        }
+    </script>
 </head>
 
 <body>
     <h1 class="text-center mt-5 moreDet">More Details About Our Rooms</h1>
-    <div class="container">
+    <div class="container mb-5">
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col">
                 <div class="card border-0 shadow">
@@ -58,7 +67,7 @@
             </div>
         </div>
 
-        <h2 class="text-center m-5" style="font-family: Agbalumo;">Now For Our Luxury Room</h2>
+        <h1 class="text-center m-5" style="font-family: Agbalumo;">Now For Our Luxury Room</h1>
         <div class="card border-0  ">
             <img src="img/Rooms/8.webp" class="card-img-top">
             <div class="card-body">

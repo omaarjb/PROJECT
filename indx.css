@@ -3,6 +3,14 @@ body {
 }
 
 /* NAVBAR */
+.navbar {
+  background-color: #f8efef;
+  transition: 0.5s;
+}
+
+.nav-item a {
+  font-weight: 500;
+}
 
 .navbar-brand {
   font-family: Agbalumo;
@@ -236,6 +244,10 @@ body {
   font-size: 19px;
 }
 
+.footer-link {
+  color: black;
+}
+
 /* ABOUT US */
 
 .aboutUs .abtTitle {
@@ -280,4 +292,97 @@ body {
   background-color: rgb(221, 219, 219);
   padding: 30px;
   border-radius: 20px;
+}
+
+/* SLIDER DARK MODE */
+html[data-theme="dark"] .navbar {
+  background-color: #414141;
+  color: #f0f0f0;
+}
+html[data-theme="dark"] .navbar .nav-item a {
+  color: #f0f0f0;
+}
+html[data-theme="dark"] .log-drop {
+  color: #f0f0f0;
+}
+
+html[data-theme="dark"] body {
+  background-color: #333;
+}
+
+html[data-theme="dark"] body h1 {
+  color: #f0f0f0;
+}
+html[data-theme="dark"] .pt-3 h1 {
+  color: black;
+}
+html[data-theme="dark"] .check-av {
+  background-color: #414141;
+  color: #f0f0f0;
+}
+html[data-theme="dark"] .check-more a {
+  background-color: #cac7c7;
+  color: #333;
+  transition: 0.3s;
+}
+html[data-theme="dark"] .check-more a:hover {
+  opacity: 0.6;
+}
+
+html[data-theme="dark"] .card {
+  background-color: #414141;
+  color: #f0f0f0;
+}
+html[data-theme="dark"] .footer {
+  background-color: #242323;
+  color: #f0f0f0;
+}
+html[data-theme="dark"] .footer a {
+  color: #f0f0f0;
+}
+html[data-theme="dark"] .aboutUs p {
+  color: #f0f0f0;
+}
+html[data-theme="dark"] .aboutUs hr {
+  color: #f0f0f0;
+}
+
+html[data-theme="dark"] .booked_room {
+  color: #f0f0f0;
+}
+
+.theme-switch input[type="checkbox"] {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  border-radius: 30px;
+  cursor: pointer;
+  height: 16px;
+  margin: 0 8px;
+  position: relative;
+  width: 32px;
+}
+
+.slider:before {
+  background-color: white;
+  border-radius: 50%;
+  content: "";
+  height: 12px;
+  left: 2px;
+  position: absolute;
+  top: 2px;
+  transition: transform 0.2s ease-in-out;
+  width: 12px;
+}
+
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+
+/* profile */
+
+.myProfile {
+  font-family: Agbalumo;
 }

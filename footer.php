@@ -17,19 +17,19 @@
             <h1>Links</h1>
             <ul>
                 <li class="mb-2">
-                    <a href="HOMEE.php" class="d-inline text-dark text-decoration-none">Home</a>
+                    <a href="HOMEE.php" class="d-inline text-decoration-none footer-link">Home</a>
                 </li>
                 <li class="mb-2">
-                    <a href="HOMEE.php#rooms" class="d-inline text-dark  text-decoration-none">Rooms</a>
+                    <a href="HOMEE.php#rooms" class="d-inline text-decoration-none footer-link">Rooms</a>
                 </li>
                 <li class="mb-2">
-                    <a href="HOMEE.php#facilities" class="d-inline text-dark  text-decoration-none">Facilities</a>
+                    <a href="HOMEE.php#facilities" class="d-inline text-decoration-none footer-link">Facilities</a>
                 </li>
                 <li class="mb-2">
-                    <a href="HOMEE.php#contactUs" class="d-inline text-dark  text-decoration-none">Contact Us</a>
+                    <a href="HOMEE.php#contactUs" class="d-inline text-decoration-none footer-link">Contact Us</a>
                 </li>
                 <li>
-                    <a href="aboutUs.php" class="d-inline text-dark  text-decoration-none">About Us</a>
+                    <a href="aboutUs.php" class="d-inline text-decoration-none footer-link">About Us</a>
                 </li>
             </ul>
         </div>
@@ -60,61 +60,65 @@
     </div>
 </div>
 
-<script>
-    let register_form = document.getElementById("register-form");
-    let passerror = document.getElementById("passError");
-    let phoneerror = document.getElementById("phoneError");
-    let emailerror = document.getElementById("emailError");
-    let registersucces = document.getElementById("registerSuccess");
-    register_form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let data = new FormData();
-        data.append('name', register_form.elements['name'].value);
-        data.append('email', register_form.elements['email'].value);
-        data.append('phonenum', register_form.elements['phonenum'].value);
-        data.append('adress', register_form.elements['adress'].value);
-        data.append('pincode', register_form.elements['pincode'].value);
-        data.append('dob', register_form.elements['dob'].value);
-        data.append('pass', register_form.elements['pass'].value);
-        data.append('cpass', register_form.elements['cpass'].value);
-        data.append('register', '');
+<!-- <script>
+    // ajax kadir bih requests mn server w tb9a page khdama bla maydar refresh
+    // register
 
-        var myModal = document.getElementById('registerModal');
-        var modal = bootstrap.Modal.getInstance(myModal);
+    // let register_form = document.getElementById("register-form");
+    // let passerror = document.getElementById("passError");
+    // let phoneerror = document.getElementById("phoneError");
+    // let emailerror = document.getElementById("emailError");
+    // let registersucces = document.getElementById("registerSuccess");
+    // register_form.addEventListener('submit', (e) => {
+    //     e.preventDefault(); // lform maytsubmitach 
+    //     let data = new FormData(); // objet kadir fih key w data
+    //     data.append('name', register_form.elements['name'].value); // par expl name how key w value hya li dkhlna f input
+    //     data.append('email', register_form.elements['email'].value);
+    //     data.append('phonenum', register_form.elements['phonenum'].value);
+    //     data.append('adress', register_form.elements['adress'].value);
+    //     data.append('pincode', register_form.elements['pincode'].value);
+    //     data.append('dob', register_form.elements['dob'].value);
+    //     data.append('pass', register_form.elements['pass'].value);
+    //     data.append('cpass', register_form.elements['cpass'].value);
+    //     data.append('register', '');
 
-
-        let xhr = new XMLHttpRequest(); // jib data mn server - sift data-update..
-        xhr.open('POST', 'login-register.php', true);
-        xhr.onload = function() {
-            if (this.responseText == "invalidphone") {
-                phoneerror.innerHTML = "Invalid phone number";
-            } else if (this.responseText == "passlength") {
-                passerror.innerHTML = "Password must conatin at least 6 characters";
-            } else if (this.responseText == "notmatch") {
-                passerror.innerHTML = "Password and Confirm Password not match";
-            } else if (this.responseText == "Email already exists") {
-                emailerror.innerHTML = this.responseText;
-            } else if (this.responseText == "Phone number already exists") {
-                phoneerror.innerHTML = this.responseText;
-            } else {
-                modal.hide();
-                registersucces.innerHTML = `<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                                            <strong>Register Success !</strong> You are registered successfully !
-                                           <button type='button' class='btn-close shadow-none' data-bs-dismiss='alert' aria-label='Close'></button>
-                                           </div>`;
-                register_form.reset();
-                phoneerror.innerHTML = "";
-                passerror.innerHTML = "";
-                emailerror.innerHTML = "";
-            }
+    //     var myModal = document.getElementById('registerModal');
+    //     var modal = bootstrap.Modal.getInstance(myModal);
 
 
-        }
-        xhr.send(data);
+    //     let xhr = new XMLHttpRequest(); // kadir request
+    //     xhr.open('POST', 'login-register.php', true); // post request / target url / true
+    //     xhr.onload = function() { // katkhdem ila jana response
+    //         if (this.responseText == "invalidphone") {
+    //             phoneerror.innerHTML = "Invalid phone number";
+    //         } else if (this.responseText == "passlength") {
+    //             passerror.innerHTML = "Password must conatin at least 6 characters";
+    //         } else if (this.responseText == "notmatch") {
+    //             passerror.innerHTML = "Password and Confirm Password not match";
+    //         } else if (this.responseText == "emailexists") {
+    //             emailerror.innerHTML = this.responseText;
+    //         } else if (this.responseText == "phoneexists") {
+    //             phoneerror.innerHTML = this.responseText;
+    //         } else {
+    //             modal.hide();
+    //             registersucces.innerHTML = `<div class='alert alert-success alert-dismissible fade show' role='alert'>
+    //                                         <strong>Register Success !</strong> You are registered successfully !
+    //                                        <button type='button' class='btn-close shadow-none' data-bs-dismiss='alert' aria-label='Close'></button>
+    //                                        </div>`;
+    //             register_form.reset();
+    //             phoneerror.innerHTML = "";
+    //             passerror.innerHTML = "";
+    //             emailerror.innerHTML = "";
+    //         }
 
 
-    });
+    //     }
+    //     xhr.send(data); // send data to server
 
+
+    // });
+
+    // login
 
     let login_form = document.getElementById("login-form");
     let emailErrorLog = document.getElementById("emailErrorLog");
@@ -130,7 +134,7 @@
         var modal = bootstrap.Modal.getInstance(myModal);
 
 
-        let xhr = new XMLHttpRequest(); // jib data mn server - sift data-update..
+        let xhr = new XMLHttpRequest();
         xhr.open('POST', 'login-register.php', true);
         xhr.onload = function() {
             if (this.responseText == "not exist") {
@@ -152,4 +156,4 @@
 
 
     });
-</script>
+</script> -->

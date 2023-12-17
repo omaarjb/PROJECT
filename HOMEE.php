@@ -1,3 +1,29 @@
+<?php
+session_start();
+include "connection.php";
+$connection = new Connection();
+$connection->selectDatabase("myHotel");
+include "category.php";
+$row1 = Category::selectCategoryById("category", $connection->conn, 1);
+$row2 = Category::selectCategoryById("category", $connection->conn, 2);
+$row3 = Category::selectCategoryById("category", $connection->conn, 3);
+include "roomBook.php";
+$floors = room::selectDistinctFloors($connection->conn);
+
+include "reservation.php";
+
+if (isset($_GET['bookNow'])) {
+    $checkInDate = $_GET['checkInDate'];
+    $checkOutDate = $_GET['checkOutDate'];
+    $categoryId = $_GET['categoryId'];
+    $idClient = $_SESSION['userId'];
+    $selectedFloor = $_GET['etage'];
+    header("Location:book_room.php?categoryId=$categoryId&checkInDate=$checkInDate&checkOutDate=$checkOutDate&etage=$selectedFloor&bookNow=");
+    exit;
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +37,9 @@
 <body>
 
 
-    <?php require("header.php") ?>
+    <?php
+
+    require("header.php") ?>
 
     <div class="pt-3">
         <div class="swiper mySwiper swiperSlide">
@@ -106,24 +134,42 @@
     </div>
 
     <section id="rooms">
-        <h2 class="text-center  fw-bold rTitle">Check Our Beautiful Rooms</h2>
+        <h1 class="text-center  fw-bold rTitle">Check Our Beautiful Rooms</h1>
         <div class="container">
             <div class="row g-3">
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow checkRoom" style="max-width: 350px; margin:auto;">
                         <img src="img/Rooms/1.webp" class="card-img-top">
                         <div class="card-body">
-                            <h5>Single Room</h5>
-                            <h6>150$/Per Night</h6>
+                            <h5><?php echo $row1['description'] ?></h5>
+                            <h6><?php echo $row1['price'] ?>$/Per Night</h6>
                             <div class="features mb-4 mt-4">
                                 <span class=" badge rounded-pill text-bg-secondary">1 Room</span>
                                 <span class=" badge rounded-pill text-bg-secondary">1 Bedroom</span>
                                 <span class=" badge rounded-pill text-bg-secondary">1 Bathroom</span>
                             </div>
-                            <div class="d-flex justify-content-evenly">
-                                <a href="#" class="btn btn-success">Book Now</a>
-                                <a href="rooms.php" class="btn log-btn">More Details</a>
-                            </div>
+                            <form action="" method="get">
+                                <input type="hidden" name="categoryId" value="1">
+                                <label for="checkInDate">Check-in Date:</label>
+                                <input type="date" id="checkInDate" name="checkInDate" required>
+                                <label for="checkOutDate">Check-out Date:</label>
+                                <input type="date" id="checkOutDate" name="checkOutDate" required>
+                                <label for="etage">Select Floor:</label>
+                                <select name="etage" id="etage" class="form-select" required>
+                                    <?php
+                                    foreach ($floors as $floor) {
+                                        echo "<option value='$floor'>$floor</option>";
+                                    }
+                                    ?>
+                                </select>
+                                <div class="d-flex justify-content-evenly mt-3">
+                                    <button type="submit" class="btn btn-success" name="bookNow">Book Now</button>
+                                    <a href="rooms.php" class="btn log-btn">More Details</a>
+                                </div>
+                            </form>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -132,17 +178,33 @@
                     <div class="card border-0 shadow checkRoom" style="max-width: 350px; margin:auto;">
                         <img src="img/Rooms/2.jpeg" class="card-img-top">
                         <div class="card-body">
-                            <h5>Couple Room</h5>
-                            <h6>250$/Per Night</h6>
+                            <h5><?php echo $row2['description'] ?></h5>
+                            <h6><?php echo $row2['price'] ?>$/Per Night</h6>
                             <div class="features mb-4 mt-4">
                                 <span class=" badge rounded-pill text-bg-secondary">2 Rooms</span>
                                 <span class=" badge rounded-pill text-bg-secondary">1 Bedroom</span>
                                 <span class=" badge rounded-pill text-bg-secondary">1 Bathroom</span>
                             </div>
-                            <div class="d-flex justify-content-evenly">
-                                <a href="#" class="btn btn-success">Book Now</a>
-                                <a href="rooms.php" class="btn log-btn">More Details</a>
-                            </div>
+                            <form action="book_room.php" method="get">
+                                <input type="hidden" name="categoryId" value="2">
+                                <label for="checkInDate">Check-in Date:</label>
+                                <input type="date" id="checkInDate" name="checkInDate" required>
+                                <label for="checkOutDate">Check-out Date:</label>
+                                <input type="date" id="checkOutDate" name="checkOutDate" required>
+                                <label for="etage">Select Floor:</label>
+                                <select name="etage" id="etage" class="form-select" required>
+                                    <?php
+
+                                    foreach ($floors as $floor) {
+                                        echo "<option value='$floor'>$floor</option>";
+                                    }
+                                    ?>
+                                </select>
+                                <div class="d-flex justify-content-evenly mt-3">
+                                    <button type="submit" class="btn btn-success" name="bookNow">Book Now</button>
+                                    <a href="rooms.php" class="btn log-btn">More Details</a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -151,24 +213,42 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow checkRoom" style="max-width: 350px; margin:auto;">
                         <img src="img/Rooms/3.jpg" class="card-img-top">
-                        <div class="card-body">
-                            <h5>Family Room</h5>
-                            <h6>300$/Per Night</h6>
-                            <div class="features mb-4 mt-4">
-                                <span class=" badge rounded-pill text-bg-secondary">3 Rooms</span>
-                                <span class=" badge rounded-pill text-bg-secondary">2 Bedroom</span>
-                                <span class=" badge rounded-pill text-bg-secondary">2 Bathroom</span>
+                        <form action="book_room.php" method="get">
+                            <div class="card-body">
+                                <h5><?php echo $row3['description'] ?></h5>
+                                <h6><?php echo $row3['price'] ?>$/Per Night</h6>
+                                <div class="features mb-4 mt-4">
+                                    <span class=" badge rounded-pill text-bg-secondary">3 Rooms</span>
+                                    <span class=" badge rounded-pill text-bg-secondary">2 Bedroom</span>
+                                    <span class=" badge rounded-pill text-bg-secondary">2 Bathroom</span>
+                                </div>
+
+                                <input type="hidden" name="categoryId" value="3">
+                                <label for="checkInDate">Check-in Date:</label>
+                                <input type="date" id="checkInDate" name="checkInDate" required>
+                                <label for="checkOutDate">Check-out Date:</label>
+                                <input type="date" id="checkOutDate" name="checkOutDate" required>
+                                <label for="etage">Select Floor:</label>
+                                <select name="etage" id="etage" class="form-select" required>
+                                    <?php
+
+                                    foreach ($floors as $floor) {
+                                        echo "<option value='$floor'>$floor</option>";
+                                    }
+                                    ?>
+                                </select>
+                                <div class="d-flex justify-content-evenly mt-3">
+                                    <button type="submit" class="btn btn-success" name="bookNow">Book Now</button>
+                                    <a href="rooms.php" class="btn log-btn">More Details</a>
+                                </div>
+
                             </div>
-                            <div class="d-flex justify-content-evenly">
-                                <a href="#" class="btn btn-success">Book Now</a>
-                                <a href="rooms.php" class="btn log-btn">More Details</a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
 
-                <div class="col-lg-12 text-center mt-5">
+                <div class="col-lg-12 text-center mt-5 check-more">
                     <a href="rooms.php" class="btn btn-sm btn-outline-dark rounded fw-bold shadow-none px-4">Check More Rooms</a>
                 </div>
             </div>
