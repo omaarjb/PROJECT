@@ -56,7 +56,7 @@ class room
 
     static function selectRoomIdByCategoryAndFloor($conn, $categoryId, $floor)
     {
-        $query = "SELECT id FROM rooms WHERE idCategory = $categoryId AND etage = '$floor' AND status = 'available' LIMIT 1";
+        $query = "SELECT id FROM rooms WHERE idCategory = $categoryId AND etage = '$floor'  LIMIT 1";
         $result = mysqli_query($conn, $query);
 
         if ($result && mysqli_num_rows($result) > 0) {

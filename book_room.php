@@ -1,5 +1,13 @@
 <?php
 session_start();
+if (!isset($_SESSION['userId'])) {
+    // Display an alert using JavaScript
+    echo '<script>alert("Please log in to access this page.");</script>';
+    // Redirect to the home page or any other page you prefer
+    echo '<script>window.location.href = "HOMEE.php";</script>';
+    // Stop further execution of the PHP code
+    exit;
+}
 include "roomBook.php";
 include "category.php";
 include "connection.php";
@@ -17,13 +25,13 @@ if (isset($_GET['bookNow'])) {
     $selectedFloor = $_GET['etage'];
     $userId = $_SESSION['userId'];
     $userName = $_SESSION['userName'];
-    $roomId = room::selectRoomIdByCategoryAndFloor($connection->conn, $categoryId, $selectedFloor);
+    $roomId = $_GET['roomId'];
 
     if ($roomId) {
         $roomStatus = room::selectRoomStatus($connection->conn, $roomId);
         if ($roomStatus !== 'booked') {
             $category = Category::selectCategoryById("category", $connection->conn, $categoryId);
-        } else {
+        } else if ($roomStatus === 'booked') {
             echo "<script>alert('Sorry, the selected room is already booked. Please choose another room.');</script>";
             exit;
         }

@@ -43,4 +43,19 @@ class Reservation
 
         return $data;
     }
+
+    static function selectReservationsByUserId($tableName, $conn, $userId)
+    {
+        $query = "SELECT * FROM $tableName WHERE idC = $userId";
+        $result = mysqli_query($conn, $query);
+        $reservations = array();
+
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $reservations[] = $row;
+            }
+        }
+
+        return $reservations;
+    }
 }

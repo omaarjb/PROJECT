@@ -18,7 +18,8 @@ if (isset($_GET['bookNow'])) {
     $categoryId = $_GET['categoryId'];
     $idClient = $_SESSION['userId'];
     $selectedFloor = $_GET['etage'];
-    header("Location:book_room.php?categoryId=$categoryId&checkInDate=$checkInDate&checkOutDate=$checkOutDate&etage=$selectedFloor&bookNow=");
+    $roomId = room::selectRoomIdByCategoryAndFloor($connection->conn, $categoryId, $selectedFloor);
+    header("Location:book_room.php?roomId=$roomId&categoryId=$categoryId&checkInDate=$checkInDate&checkOutDate=$checkOutDate&etage=$selectedFloor&bookNow=");
     exit;
 }
 
