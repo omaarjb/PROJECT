@@ -137,6 +137,7 @@ if (isset($_POST['login'])) {
                 </li>
             </ul>
             <div class="d-flex ">
+                <button type="button" class="btn btn-secondary mx-2"><a href="admin.php" style="text-decoration: none; color:coral;font-weight:bold">ADMIN</a></button>
                 <div class="d-flex align-items-center mx-2">
                     <i class="fa-regular fa-sun"></i>
                     <div>

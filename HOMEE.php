@@ -38,9 +38,13 @@ if (isset($_GET['bookNow'])) {
 <body>
 
 
+
+
     <?php
 
     require("header.php") ?>
+
+
 
     <div class="pt-3">
         <div class="swiper mySwiper swiperSlide">
@@ -93,7 +97,12 @@ if (isset($_GET['bookNow'])) {
         </div>
     </div>
 
-    <div class="container Avlibality">
+    <video controls id="backgroundVideo">
+        <source src="video.mp4" type="video/mp4">
+
+    </video>
+
+    <!-- <div class="container Avlibality">
         <div class="row">
             <div class="col-lg-12  p-4 check-av">
                 <form action="">
@@ -132,7 +141,7 @@ if (isset($_GET['bookNow'])) {
             </div>
 
         </div>
-    </div>
+    </div> -->
 
     <section id="rooms">
         <h1 class="text-center  fw-bold rTitle">Check Our Beautiful Rooms</h1>

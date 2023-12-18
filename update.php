@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Client</title>
+    <title>Update User</title>
     <?php require("links.php") ?>
 </head>
 

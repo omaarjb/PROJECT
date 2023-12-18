@@ -10,7 +10,7 @@
 
 <body>
     <div class="bg-secondary container-fluid">
-        <h2 class="p-4 text-white">LIST OF USERS FROM DATABASE</h2>
+        <h2 class="p-4 text-white">LIST OF USERS</h2>
     </div>
     <div class="container my-5">
 
