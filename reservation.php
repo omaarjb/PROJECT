@@ -58,4 +58,35 @@ class Reservation
 
         return $reservations;
     }
+
+
+    static function selectReservationsRoomsByUserId($conn, $userId)
+    {
+        $query = "SELECT ro.etage,c.description,re.dataDebut,re.dateFin,re.idR
+        FROM rooms ro,category c,reservation re
+        WHERE re.idR=ro.id 
+        AND re.idC=$userId
+        AND ro.idCategory=c.idCategory";
+        $result = mysqli_query($conn, $query);
+        $reservations = array();
+
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $reservations[] = $row;
+            }
+        }
+
+        return $reservations;
+    }
+
+    public function deleteReservationByRoom($tableName, $conn, $userId, $idRoom)
+    {
+        $query = "DELETE FROM $tableName where idC=$userId AND idR=$idRoom";
+        if (mysqli_query($conn, $query)) {
+            self::$successMsg = "Reservation deleted successfully";
+        } else {
+            self::$errorMsg = "Error deleting reservation: " . mysqli_error($conn);
+            die(self::$errorMsg);
+        }
+    }
 }

@@ -67,22 +67,7 @@
             </div>
         </div>
 
-        <h1 class="text-center m-5" style="font-family: Agbalumo;">Now For Our Luxury Room</h1>
-        <div class="card border-0  ">
-            <img src="img/Rooms/8.webp" class="card-img-top">
-            <div class="card-body">
-                <h2>Luxury Room</h2>
-                <h6>800$/Per Night</h6>
-                <div class="features mb-4 mt-4">
-                    <span class=" badge rounded-pill text-bg-secondary">4 Rooms</span>
-                    <span class=" badge rounded-pill text-bg-secondary">3 Bedrooms</span>
-                    <span class=" badge rounded-pill text-bg-secondary">3 Bathroom</span>
-                </div>
-                <div class="text-center">
-                    <a href="#" class="btn btn-success px-5">Book Now</a>
-                </div>
-            </div>
-        </div>
+
     </div>
 
 </body>

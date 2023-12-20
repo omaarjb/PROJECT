@@ -191,11 +191,11 @@ if (isset($_GET['bookNow'])) {
                             <h5><?php echo $row2['description'] ?></h5>
                             <h6><?php echo $row2['price'] ?>$/Per Night</h6>
                             <div class="features mb-4 mt-4">
-                                <span class=" badge rounded-pill text-bg-secondary">2 Rooms</span>
+                                <span class=" badge rounded-pill text-bg-secondary">2 Room</span>
                                 <span class=" badge rounded-pill text-bg-secondary">1 Bedroom</span>
                                 <span class=" badge rounded-pill text-bg-secondary">1 Bathroom</span>
                             </div>
-                            <form action="book_room.php" method="get">
+                            <form action="" method="get">
                                 <input type="hidden" name="categoryId" value="2">
                                 <label for="checkInDate">Check-in Date:</label>
                                 <input type="date" id="checkInDate" name="checkInDate" required>
@@ -204,7 +204,6 @@ if (isset($_GET['bookNow'])) {
                                 <label for="etage">Select Floor:</label>
                                 <select name="etage" id="etage" class="form-select" required>
                                     <?php
-
                                     foreach ($floors as $floor) {
                                         echo "<option value='$floor'>$floor</option>";
                                     }
@@ -215,6 +214,9 @@ if (isset($_GET['bookNow'])) {
                                     <a href="rooms.php" class="btn log-btn">More Details</a>
                                 </div>
                             </form>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -223,16 +225,15 @@ if (isset($_GET['bookNow'])) {
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow checkRoom" style="max-width: 350px; margin:auto;">
                         <img src="img/Rooms/3.jpg" class="card-img-top">
-                        <form action="book_room.php" method="get">
-                            <div class="card-body">
-                                <h5><?php echo $row3['description'] ?></h5>
-                                <h6><?php echo $row3['price'] ?>$/Per Night</h6>
-                                <div class="features mb-4 mt-4">
-                                    <span class=" badge rounded-pill text-bg-secondary">3 Rooms</span>
-                                    <span class=" badge rounded-pill text-bg-secondary">2 Bedroom</span>
-                                    <span class=" badge rounded-pill text-bg-secondary">2 Bathroom</span>
-                                </div>
-
+                        <div class="card-body">
+                            <h5><?php echo $row3['description'] ?></h5>
+                            <h6><?php echo $row3['price'] ?>$/Per Night</h6>
+                            <div class="features mb-4 mt-4">
+                                <span class=" badge rounded-pill text-bg-secondary">3 Room</span>
+                                <span class=" badge rounded-pill text-bg-secondary">2 Bedroom</span>
+                                <span class=" badge rounded-pill text-bg-secondary">2 Bathroom</span>
+                            </div>
+                            <form action="" method="get">
                                 <input type="hidden" name="categoryId" value="3">
                                 <label for="checkInDate">Check-in Date:</label>
                                 <input type="date" id="checkInDate" name="checkInDate" required>
@@ -241,7 +242,6 @@ if (isset($_GET['bookNow'])) {
                                 <label for="etage">Select Floor:</label>
                                 <select name="etage" id="etage" class="form-select" required>
                                     <?php
-
                                     foreach ($floors as $floor) {
                                         echo "<option value='$floor'>$floor</option>";
                                     }
@@ -251,16 +251,17 @@ if (isset($_GET['bookNow'])) {
                                     <button type="submit" class="btn btn-success" name="bookNow">Book Now</button>
                                     <a href="rooms.php" class="btn log-btn">More Details</a>
                                 </div>
+                            </form>
 
-                            </div>
-                        </form>
+
+
+                        </div>
                     </div>
                 </div>
 
 
-                <div class="col-lg-12 text-center mt-5 check-more">
-                    <a href="rooms.php" class="btn btn-sm btn-outline-dark rounded fw-bold shadow-none px-4">Check More Rooms</a>
-                </div>
+
+
             </div>
         </div>
     </section>
