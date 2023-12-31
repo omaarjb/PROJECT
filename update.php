@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     if (empty($emailValue) || empty($nameValue) || empty($adressValue) || empty($pincodeValue) || empty($phonenumValue) || empty($dobValue)) {
         $errorMessage = "Please fill all fields";
     } else {
-        $client = new Client($nameValue, $emailValue, $adressValue, $pincodeValue, $phonenumValue, $dobValue, $passwordValue);
+        $client = new Client($nameValue, $emailValue, $adressValue, $phonenumValue, $pincodeValue, $dobValue, $passwordValue);
         $client->updateClient($client, "users_info", $connection->conn, $_GET['id']);
         $successMessage = "Client updated successfully";
     }
@@ -55,9 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     <?php require("links.php") ?>
 </head>
 
-<body>
-    <div class="bg-secondary container-fluid">
+<body class="bg-dark text-white">
+    <div class="bg-secondary container-fluid d-flex justify-content-evenly align-items-center">
         <h2 class="p-4 text-white">UPDATE USER</h2>
+        <a href="HOMEE.php" class="text-dark" style="font-size: 25px;"><i class="fa-solid fa-house"></i></a>
+
     </div>
     <div class="container my-5 ">
 
@@ -117,17 +119,17 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
             <?php
             if (!empty($successMessage)) {
                 echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-<strong>$successMessage</strong>
-<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
-</button>
-</div>";
+                        <strong>$successMessage</strong>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                        </button>
+                      </div>";
             }
             ?>
 
 
             <div class="row mb-3 mt-5">
                 <div class="offset-sm-1 col-sm-3 d-grid">
-                    <button name="submit" type="submit" class=" btn btn-success">Update</button>
+                    <button name="submit" type="submit" class=" btn btn-warning">Update</button>
                 </div>
                 <div class="col-sm-1 col-sm-3 d-grid">
                     <a class="btn btn-outline-danger" href="listClient.php">Cancel</a>

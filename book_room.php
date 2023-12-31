@@ -33,6 +33,7 @@ if (isset($_GET['bookNow'])) {
             $category = Category::selectCategoryById("category", $connection->conn, $categoryId);
         } else if ($roomStatus === 'booked') {
             echo "<script>alert('Sorry, the selected room is already booked. Please choose another room.');</script>";
+
             exit;
         }
     } else {
@@ -79,7 +80,8 @@ if (isset($_GET['bookNow'])) {
                     <td><?php echo $selectedFloor ?></td>
                     <td><?php echo $checkInDate ?></td>
                     <td><?php echo $checkOutDate ?></td>
-                    <td><?php echo "<a class='btn btn-success btn-sm' href='booked.php?roomId=$roomId&userId=$userId&checkInDate=$checkInDate&checkOutDate=$checkOutDate'>Accept</a>
+                    <td>
+                        <?php echo "<a class='btn btn-warning btn-sm' href='booked.php?roomId=$roomId&userId=$userId&checkInDate=$checkInDate&checkOutDate=$checkOutDate'>Accept</a>
                         <a class='btn btn-danger btn-sm' href='HOMEE.php'>Cancel</a>" ?>
                     </td>
                 </tr>

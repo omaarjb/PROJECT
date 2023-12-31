@@ -45,7 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             <form method="post">
                                 <input type="hidden" name="idRoom" value=<?php echo $row['idR'] ?>>
                                 <h5><?php echo $row['description'] ?></h5>
-                                <h6>Etage : <?php echo $row['etage'] ?></h6>
+                                <h6>Room N° : <?php echo $row['idR'] ?></h6>
+                                <h6>Floor : <?php echo $row['etage'] ?></h6>
                                 <h6>Check in date : <?php echo $row['dataDebut'] ?></h6>
                                 <h6>Check out date : <?php echo $row['dateFin'] ?></h6>
                                 <div class="d-flex justify-content-center mt-3">

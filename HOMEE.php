@@ -9,7 +9,7 @@ $row2 = Category::selectCategoryById("category", $connection->conn, 2);
 $row3 = Category::selectCategoryById("category", $connection->conn, 3);
 include "roomBook.php";
 $floors = room::selectDistinctFloors($connection->conn);
-
+$errorMsg = "";
 include "reservation.php";
 
 if (isset($_GET['bookNow'])) {
@@ -19,8 +19,14 @@ if (isset($_GET['bookNow'])) {
     $idClient = $_SESSION['userId'];
     $selectedFloor = $_GET['etage'];
     $roomId = room::selectRoomIdByCategoryAndFloor($connection->conn, $categoryId, $selectedFloor);
-    header("Location:book_room.php?roomId=$roomId&categoryId=$categoryId&checkInDate=$checkInDate&checkOutDate=$checkOutDate&etage=$selectedFloor&bookNow=");
-    exit;
+    if (strtotime($checkInDate) >= strtotime($checkOutDate)) {
+        $errorMessages[$categoryId] = "Check-out date must be greater than check-in date";
+    } else if (strtotime($checkInDate) < strtotime(date("Y-m-d"))) {
+        $errorMessages[$categoryId] = "Check-in date must be greater than or equal to today's date";
+    } else {
+        header("Location:book_room.php?roomId=$roomId&categoryId=$categoryId&checkInDate=$checkInDate&checkOutDate=$checkOutDate&etage=$selectedFloor&bookNow=");
+        exit;
+    }
 }
 
 
@@ -102,46 +108,6 @@ if (isset($_GET['bookNow'])) {
 
     </video>
 
-    <!-- <div class="container Avlibality">
-        <div class="row">
-            <div class="col-lg-12  p-4 check-av">
-                <form action="">
-                    <div class="row align-items-end">
-                        <div class="col-lg-3 mb-3">
-                            <label class="form-label fw-bold">Check-IN</label>
-                            <input type="date" class="form-control shadow-none">
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <label class="form-label fw-bold">Check-Out</label>
-                            <input type="date" class="form-control shadow-none">
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <label class="form-label fw-bold">Adult</label>
-                            <select class="form-select shadow-none">
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-2 mb-3">
-                            <label class="form-label fw-bold">Children</label>
-                            <select class="form-select shadow-none">
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-1 mb-3">
-                            <button type="submit" class="btn btn-success text-white shadow-none px-3  ">Check</button>
-                        </div>
-
-
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div> -->
 
     <section id="rooms">
         <h1 class="text-center  fw-bold rTitle">Check Our Beautiful Rooms</h1>
@@ -163,9 +129,12 @@ if (isset($_GET['bookNow'])) {
                                 <label for="checkInDate">Check-in Date:</label>
                                 <input type="date" id="checkInDate" name="checkInDate" required>
                                 <label for="checkOutDate">Check-out Date:</label>
-                                <input type="date" id="checkOutDate" name="checkOutDate" required>
+                                <input type="date" id="checkOutDate" name="checkOutDate" required> <br>
+                                <span style="color: red;">
+                                    <?php echo isset($errorMessages[1]) ? $errorMessages[1] : ""; ?>
+                                </span><br>
                                 <label for="etage">Select Floor:</label>
-                                <select name="etage" id="etage" class="form-select" required>
+                                <select name="etage" id="etage" class="form-select shadow-none" required>
                                     <?php
                                     foreach ($floors as $floor) {
                                         echo "<option value='$floor'>$floor</option>";
@@ -200,9 +169,12 @@ if (isset($_GET['bookNow'])) {
                                 <label for="checkInDate">Check-in Date:</label>
                                 <input type="date" id="checkInDate" name="checkInDate" required>
                                 <label for="checkOutDate">Check-out Date:</label>
-                                <input type="date" id="checkOutDate" name="checkOutDate" required>
+                                <input type="date" id="checkOutDate" name="checkOutDate" required><br>
+                                <span style="color: red;">
+                                    <?php echo isset($errorMessages[2]) ? $errorMessages[2] : ""; ?>
+                                </span><br>
                                 <label for="etage">Select Floor:</label>
-                                <select name="etage" id="etage" class="form-select" required>
+                                <select name="etage" id="etage" class="form-select shadow-none" required>
                                     <?php
                                     foreach ($floors as $floor) {
                                         echo "<option value='$floor'>$floor</option>";
@@ -238,9 +210,12 @@ if (isset($_GET['bookNow'])) {
                                 <label for="checkInDate">Check-in Date:</label>
                                 <input type="date" id="checkInDate" name="checkInDate" required>
                                 <label for="checkOutDate">Check-out Date:</label>
-                                <input type="date" id="checkOutDate" name="checkOutDate" required>
+                                <input type="date" id="checkOutDate" name="checkOutDate" required><br>
+                                <span style="color: red;">
+                                    <?php echo isset($errorMessages[3]) ? $errorMessages[3] : ""; ?>
+                                </span><br>
                                 <label for="etage">Select Floor:</label>
-                                <select name="etage" id="etage" class="form-select" required>
+                                <select name="etage" id="etage" class="form-select shadow-none" required>
                                     <?php
                                     foreach ($floors as $floor) {
                                         echo "<option value='$floor'>$floor</option>";

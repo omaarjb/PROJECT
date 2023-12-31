@@ -17,11 +17,8 @@ session_start();
     <div class="container mt-5">
         <div class="alert alert-success text-center" role="alert">
             <h2>Thank You for Your Reservation!</h2>
-            <p>Go to your bookings for more details</p>
+            <p>Go check your bookings for more details</p>
         </div>
-
-
-
     </div>
 
     <?php require "footer.php" ?>
